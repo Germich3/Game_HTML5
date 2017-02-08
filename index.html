@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Game HTML5</title>
+        <script src="js/phaser.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+
+        function preload() {
+            game.load.image('sw', 'assets/bg/sw.png');
+        }
+
+        function create() {
+            game.add.sprite(0, -400, 'sw');
+        }
+        
+        function update() {
+            
+        }
+        
+        function render() {
+            
+        }
+    };
+
+    </script>
+
+    </body>
+</html>
