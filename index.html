@@ -14,19 +14,42 @@
         var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
 
         function preload() {
-            game.load.image('sw', 'assets/bg/sw.png');
+            game.load.image('sw', 'assets/bg/sv.png');
+            game.load.image('gunman','assets/bg/pistolero.png');
+            game.load.image('bullet','assets/bg/bola.png');
         }
-
+        var weapon;
+        var fireButton;
+      
         function create() {
-            game.add.sprite(0, -400, 'sw');
+            
+            game.add.image(0,-400,'sw');
+            game.add.image(10,300,'gunman');
+            
+            weapon = game.add.weapon(100,'bullet');
+            weapon.bulletSpeed = 100;
+            weapon.fireRate = 100;
+            
+        
+
+            
+            fireButton= this.input.keyboard.addkey(Pharser.KeyCode.SPACEBAR);
+            
         }
         
         function update() {
             
+            //if(fireButton.isDown){
+              //  weapon.fire();
+            //} 
+         
+              
         }
         
         function render() {
-            
+         
+            // weapon.debug();
+        
         }
     };
 
