@@ -15,14 +15,14 @@
 
         function preload() {
             game.load.image('sw', 'assets/bg/sw.png');
-            game.load.image('gunman','assets/chs/gunman.png');
+            game.load.image('gunman_1','assets/chs/gunman_1.png');
+            game.load.image('gunman_2','assets/chs/gunman_2.png');
             game.load.image('bullet','assets/other/bullet.png');
         }
         
-        var sprite;
-        var weapon;
-        var cursors;
-        var fireButton;
+        var sprite_1;
+        var weapon_1;
+        var fireButton_1;
         
         var sprite_2;
         var weapon_2;
@@ -34,18 +34,18 @@
             game.add.image(0,-400,'sw');
             
             //Player 1
-            weapon = game.add.weapon(1, 'bullet');
-            weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon.bulletSpeed = 600;
-            weapon.fireRate = 100;
-            sprite = this.add.sprite(150, 400, 'gunman');
-            sprite.anchor.set(0.5);
-            game.physics.arcade.enable(sprite);
-            sprite.body.drag.set(70);
-            sprite.body.maxVelocity.set(200);
-            weapon.trackSprite(sprite, 150, -70, true);
-            //cursors = this.input.keyboard.createCursorKeys();
-            fireButton = this.input.keyboard.addKey(Phaser.KeyCode.A);
+            weapon_1 = game.add.weapon(1, 'bullet');
+            weapon_1.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+            weapon_1.bulletSpeed = 600;
+            weapon_1.fireRate = 100;
+            sprite_1 = this.add.sprite(150, 400, 'gunman_1');
+            sprite_1.anchor.set(0.5);
+            game.physics.arcade.enable(sprite_1);
+            sprite_1.body.drag.set(70);
+            sprite_1.body.maxVelocity.set(200);
+            weapon_1.trackSprite(sprite_1, 150, -70, false);
+            weapon_1.fireAngle = Phaser.ANGLE_RIGHT;
+            fireButton_1 = this.input.keyboard.addKey(Phaser.KeyCode.A);
             
             //Player 2
             weapon_2 = game.add.weapon(1, 'bullet');
@@ -53,53 +53,30 @@
             weapon_2.bulletSpeed = 600;
             weapon_2.fireRate = 100;
             weapon_2.bulletAngleOffset = 180;
-            
-            sprite_2 = this.add.sprite(640, 400, 'gunman');
+            sprite_2 = this.add.sprite(640, 400, 'gunman_2');
             sprite_2.scale.x = -1;
             sprite_2.anchor.set(0.5);
             game.physics.arcade.enable(sprite_2);
             sprite_2.body.drag.set(70);
             sprite_2.body.maxVelocity.set(200);
-            weapon_2.trackSprite(sprite_2, -150, -70, true);
-            //cursors = this.input.keyboard.createCursorKeys();
+            weapon_2.trackSprite(sprite_2, -150, -70, false);
+            weapon_2.fireAngle = Phaser.ANGLE_LEFT;
             fireButton_2 = this.input.keyboard.addKey(Phaser.KeyCode.L);
         }
         
         function update() {
-            /*
-            if (cursors.up.isDown) {
-                game.physics.arcade.accelerationFromRotation(sprite.rotation, 300, sprite.body.acceleration);
-            }
-            else {
-                sprite.body.acceleration.set(0);
-            }
-
-            if (cursors.left.isDown) {
-                sprite.body.angularVelocity = -300;
-            }
-            else if (cursors.right.isDown) {
-                sprite.body.angularVelocity = 300;
-            }
-            else {
-                sprite.body.angularVelocity = 0;
-            }
-            */
-            if (fireButton.isDown) {
-                weapon.fire();
+            
+            if (fireButton_1.isDown) {
+                weapon_1.fire();
             }
             if (fireButton_2.isDown) {
                 weapon_2.fire();
             }
-            
-            game.world.wrap(sprite, 16);
-            game.world.wrap(sprite_2, 16);
-              
+           
         }
         
         function render() {
-         
-            //weapon.debug();
-        
+            
         }
     };
 
