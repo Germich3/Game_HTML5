@@ -1,93 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+<one line to give the program's name and a brief idea of what it does.>
+Copyright (C) 2017 <Author>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>Game HTML5</title>
+        <title>Gunmans</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--<script src="js/jquery.min.js"></script>-->
         <script src="js/phaser.min.js"></script>
+        <script src="js/Boot.js"></script>
+        <script src="js/Preloader.js"></script>
+        <script src="js/MainMenu.js"></script>
+        <script src="js/Play.js"></script>
     </head>
     <body>
-
-    <script type="text/javascript">
-
-    window.onload = function() {
-
-        var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update, render: render });
-        
-        function preload() {
-            game.load.image('sw', 'assets/bg/sw.png');
-            game.load.image('gunman_1','assets/chs/gunman_1.png');
-            game.load.image('gunman_2','assets/chs/gunman_2.png');
-            game.load.image('bullet','assets/other/bullet.png');
-        }
-        
-        var sprite_1;
-        var weapon_1;
-        var fireButton_1;
-        
-        var sprite_2;
-        var weapon_2;
-        var fireButton_2;
-        
-        function create() {
-            
-            //BG
-            game.add.image(0,-400,'sw');
-            
-            //Player 1
-            sprite_1 = this.add.sprite(150, 400, 'gunman_1');
-            sprite_1.anchor.set(0.5);
-            game.physics.arcade.enable(sprite_1);
-            sprite_1.body.drag.set(70);
-            sprite_1.body.maxVelocity.set(200);
-            
-            //Player 2
-            sprite_2 = this.add.sprite(640, 400, 'gunman_2');
-            sprite_2.scale.x = -1; //Reverse
-            sprite_2.anchor.set(0.5);
-            game.physics.arcade.enable(sprite_2);
-            sprite_2.body.drag.set(70);
-            sprite_2.body.maxVelocity.set(200);
-            
-            //Weapon_1
-            weapon_1 = game.add.weapon(1, 'bullet');
-            weapon_1.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon_1.bulletSpeed = 600;
-            weapon_1.fireRate = 100;
-            weapon_1.bulletAngleOffset = 0;
-            weapon_1.trackSprite(sprite_1, 150, -70, false);
-            weapon_1.fireAngle = Phaser.ANGLE_RIGHT;
-            fireButton_1 = this.input.keyboard.addKey(Phaser.KeyCode.A);
-            
-            //Weapon_2
-            weapon_2 = game.add.weapon(1, 'bullet');
-            weapon_2.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-            weapon_2.bulletSpeed = 600;
-            weapon_2.fireRate = 100;
-            weapon_2.bulletAngleOffset = 0;
-            weapon_2.trackSprite(sprite_2, -150, -70, false);
-            weapon_2.fireAngle = Phaser.ANGLE_LEFT;
-            fireButton_2 = this.input.keyboard.addKey(Phaser.KeyCode.L);
-            
-        }
-        
-        function update() {
-            
-            if (fireButton_1.isDown) {
-                weapon_1.fire();
-            }
-            if (fireButton_2.isDown) {
-                weapon_2.fire();
-            }
-           
-        }
-        
-        function render() {
-            
-        }
-    };
-
-    </script>
-    
+        <script>
+            window.onload = function() {
+                
+                var game = new Phaser.Game(800, 600, Phaser.CANVAS, '');
+                
+                game.state.add('Boot', Game.Boot);
+                game.state.add('Preloader', Game.Preloader);
+                game.state.add('MainMenu', Game.MainMenu);
+                game.state.add('Play', Game.Play);
+                
+                game.state.start('Boot');
+                
+            };
+        </script>
     </body>
 </html>
