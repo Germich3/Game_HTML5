@@ -15,9 +15,13 @@ Game.Preloader.prototype = {
         this.game.load.image('gunman_2','assets/chs/gunman_2.png');
         this.game.load.image('bullet','assets/other/bullet.png');
         
+        //Menu assests
+        this.game.load.image('titlescreen','assets/menu/bgmenu.png');
+        this.game.load.image('button','assets/menu/button.png');
+        
     },
     
      create: function() {
-        this.state.start('Play');
+        this.state.start('MainMenu');
     }
 };
