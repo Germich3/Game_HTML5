@@ -4,10 +4,9 @@ Game.Preloader = function(game){
 
 Game.Preloader.prototype = {
     preload: function() {
-        this.preloadBg = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBg');
-        this.preloadBg.anchor.setTo(0.5,0.5);
-        this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar');
-        this.preloadBar.anchor.setTo(0.5,0.5);
+        this.text = this.add.text(this.world.centerX-75, this.world.centerY-80, "Loading...", {font:"32px Arial", fill:"#FFF", align:"center"});
+        this.preloadBg = this.add.sprite(this.world.centerX-240, this.world.centerY-30, 'preloaderBg');
+        this.preloadBar = this.add.sprite(this.world.centerX-220, this.world.centerY-10, 'preloaderBar');
         this.time.advancedTiming = true;
         this.load.setPreloadSprite(this.preloadBar);
         
