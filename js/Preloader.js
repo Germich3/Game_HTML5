@@ -1,9 +1,11 @@
-Game.Preloader = function(game){ 
+Game.Preloader = function(game){
     this.preloadBar = null;
 };
 
 Game.Preloader.prototype = {
     preload: function() {
+        this.preloadBg = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBg');
+        this.preloadBg.anchor.setTo(0.5,0.5);
         this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar');
         this.preloadBar.anchor.setTo(0.5,0.5);
         this.time.advancedTiming = true;
