@@ -21,7 +21,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <title>Gunmans</title>
         <meta charset="UTF-8">
         <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-        <!--<script src="js/jquery.min.js"></script>-->
+        <!-- Css zone -->
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- Script zone -->
+        <script src="js/jquery.min.js"></script>
         <script src="js/phaser.min.js"></script>
         <script src="js/Boot.js"></script>
         <script src="js/Preloader.js"></script>
@@ -29,6 +33,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <script src="js/Play.js"></script>
     </head>
     <body>
+        <div id="canvas"></div>
+        <div id="buttons">
+            <button id="player_1">Player 1</button>
+            <script>
+            
+            </script>
+            <button id="player_2">Player 2</button>
+            <script>
+            
+            </script>
+        </div>
         <script>
             window.onload = function() {
                 
@@ -42,6 +57,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 game.state.start('Boot');
                 
             };
+        </script>
+        <script>
+            $(document).ready(function() {    
+                setTimeout(function(){
+                    var canvas = $('canvas').detach();
+                    $('#canvas').append(canvas);
+                }, 100);
+            });
         </script>
     </body>
 </html>
