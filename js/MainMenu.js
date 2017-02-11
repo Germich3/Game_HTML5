@@ -4,10 +4,13 @@ Game.MainMenu = function(game){
 
 Game.MainMenu.prototype = {
     create: function() {
-        titlescreen = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY - 192, 'titlescreen');
-        titlescreen.anchor.setTo(0.5,0.5);
+        this.music = this.game.add.audio('west');
+        this.music.play();
         
-        this.createbutton(this.game, 'Play', this.game.world.centerX, this.game.world.centerY + 32, 300, 100, function(){this.state.start('Play')});
+        this.titlescreen = this.game.add.sprite(0, 0, 'titlescreen');
+        this.titlescreen.scale.setTo(0.45,0.55);
+        
+        this.createbutton(this.game, 'Play', this.game.world.centerX, this.game.world.centerY + 32, 300, 100, function(){this.music.stop(); this.state.start('Play')});
     },
     
     update: function() {
