@@ -1,4 +1,6 @@
-var Game = {};
+var Game = {
+    mainMusic : null
+};
 
 Game.Boot = function(game){
     

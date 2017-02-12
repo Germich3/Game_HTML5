@@ -1,15 +1,5 @@
-Game.Play = function(game){};
-
-var Play = function () {
-    //Player 1
-    this.sprite_1;
-    this.weapon_1;
-    this.fireButton_1;
-        
-    //Player 2
-    this.sprite_2;
-    this.weapon_2;
-    this.fireButton_2;
+Game.Play = function(game){
+    
 };
 
 Game.Play.prototype = {
