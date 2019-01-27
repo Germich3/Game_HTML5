@@ -9,6 +9,7 @@ This is a game writen in JavaScript with Phaser.js lib
 # Controls
 
 Key A: Shoot Gunman Left
+
 Key L: Shoot Gunman Right
 
 # Status
